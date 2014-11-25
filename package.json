@@ -1,0 +1,24 @@
+{
+  "name": "route-fs",
+  "version": "1.0.0",
+  "description": "Add route with fs structure and restful style.",
+  "main": "route_fs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karboom/route-fs"
+  },
+  "keywords": [
+    "route",
+    "fs",
+    "restful"
+  ],
+  "author": "karboom",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/karboom/route-fs/issues"
+  },
+  "homepage": "https://github.com/karboom/route-fs"
+}
