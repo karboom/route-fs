@@ -76,7 +76,7 @@ Binder.prototype.handle = function () {
        }
 
         res.status(404);
-        res.send({asd:123});
+        res.send('not found');
     };
 };
 
