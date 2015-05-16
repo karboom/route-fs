@@ -10,7 +10,8 @@ describe("Binder", function () {
         server = restify.createServer();
         server.use(restify.queryParser());
         server.use(restify.bodyParser());
-        server.get(/.+/,main.handle());
+        //server.get(/.+/,main.handle());
+        main.bind(server);
         server.listen(3200, function (err) {
             if (err) console.log(err);
         });
