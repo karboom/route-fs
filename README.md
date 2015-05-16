@@ -1,53 +1,32 @@
-route-fs
+Route-fs
 ========
 
-Add route with fs structure and restful style.
+A easy way to organize your routers.Say goodbye to writing route list by hand, just with the file system.
 
-usage
-=====
+How to use
+==========
+
 ```
 npm install route-fs
 ```
-```
-var server = require('express').createServer(); //or other express like server
-var route_fs = require('route-fs');
 
-// use your middleware here
-
-route_fs.bind(server, './routes'); //see project below
-
-server.listen(3000);
+Import it to your project
+```javascript
 
 ```
 
-project
+**you have two way to make it work**
+
+######The way 1:As a wild router
+```javascript
+
+```
+
+######The way 2:Bind to your server
+```javascript
+
+
+```
+
+example
 =======
-```
-|-index.js
-|-routes
-	|-hello.js
-	|-user
-    	|-student.js
-
-```
-route-flis
-==========
-hello.js
-```
-exports.get = function (req, res) {
-	res.send('hello,' + req.params.name + '!');
-}
-```
-user/student.js
-```
-exports.put = function (req, res) {
-	res.send('good evening,'+ req.params.name +'!');
-}
-```
-results
-=======
-| req | res |
-|--------|--------|
-| GET:/hello/everyone 		|   hello,everyone!     |
-| PUT:/user/student/karboom |   good evening,karboom!     |
-

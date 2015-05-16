@@ -80,4 +80,16 @@ Binder.prototype.handle = function () {
     };
 };
 
+Binder.prototype.bind = function (server) {
+    var routes = this.parse_uri(), file;
+
+    routes.forEach(function (route) {
+        file = require(route.path);
+
+        Object.keys(file).forEach(function (method) {
+            server[method](route.uri, file[method]);
+        })
+    });
+};
+
 module.exports = Binder;
