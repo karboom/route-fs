@@ -1,53 +1,37 @@
-route-fs
+Route-fs
 ========
 
-Add route with fs structure and restful style.
+A easy way to organize your routers.Say goodbye to writing route list by hand, just with the file system.
 
-usage
-=====
+How to use
+==========
+
 ```
 npm install route-fs
 ```
-```
+
+Import it to your project
+```javascript
 var server = require('express').createServer(); //or other express like server
-var route_fs = require('route-fs');
-
-// use your middleware here
-
-route_fs.bind(server, './routes'); //see project below
-
+var Routers = require('route-fs');
+var routers = new Routers({root:YOUR_PATH_OF_ROUTERS});
 server.listen(3000);
-
 ```
 
-project
+**you have two way to make it work**
+
+######The way 1:As a wild router
+```javascript
+['get', 'post', 'delete', 'head', 'put']
+	.forEach(function(method){
+    	server[method](/.+/, routers.handle())
+    });
+```
+
+######The way 2:Bind to your server
+```javascript
+routers.bind(server);
+```
+
+example
 =======
-```
-|-index.js
-|-routes
-	|-hello.js
-	|-user
-    	|-student.js
-
-```
-route-flis
-==========
-hello.js
-```
-exports.get = function (req, res) {
-	res.send('hello,' + req.params.name + '!');
-}
-```
-user/student.js
-```
-exports.put = function (req, res) {
-	res.send('good evening,'+ req.params.name +'!');
-}
-```
-results
-=======
-| req | res |
-|--------|--------|
-| GET:/hello/everyone 		|   hello,everyone!     |
-| PUT:/user/student/karboom |   good evening,karboom!     |
-
