@@ -71,8 +71,7 @@ describe("Binder", function () {
         });
     });
 
-    describe("#bind", function () {
-    });
+
 
     after(function () {
         
