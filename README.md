@@ -35,3 +35,11 @@ routers.bind(server);
 
 example
 =======
+**①If YOUR_PATH_OF_ROUTERS contain the file /person/works.js
+it's the same as add route with /person/works/:id**
+
+**②If there have a directory and file with the same name in one directory,such as /person.js
+In the ①, it becomes /:person/works/:id**
+
+#####For more detail, see /test directory now
+
