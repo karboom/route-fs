@@ -3,6 +3,8 @@ Route-fs
 
 A easy way to organize your routers.Say goodbye to writing route list by hand, just with the file system.
 
+[![Build Status](https://travis-ci.org/karboom/route-fs.svg?branch=master)](https://travis-ci.org/karboom/route-fs)
+
 How to use
 ==========
 

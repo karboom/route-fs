@@ -3,7 +3,10 @@ node_js:
   - "0.12"
   - "0.11"
   - "0.10"
+after_script: "npm install coveralls && cat ./coverage/lcov.info | coveralls"
 deploy:
   provider: npm
   email: "mail@karboom.me"
   api_key: "a2FyYm9vbTo0NzI5NDE5MDA="
+  on:
+      branch: master
