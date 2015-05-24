@@ -1,10 +1,10 @@
 {
   "name": "route-fs",
-  "version": "1.0.0",
-  "description": "Add route with fs structure and restful style.",
+  "version": "2.0.3",
+  "description": "A easy way to organize your routers.Say goodbye to writing route list by hand, just proxy to file system.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/index.js"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,10 @@
   "keywords": [
     "route",
     "fs",
-    "restful"
+    "file system",
+    "restful",
+    "api",
+    "proxy"
   ],
   "author": "karboom",
   "license": "GPL-2.0",
