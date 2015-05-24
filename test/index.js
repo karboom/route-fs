@@ -5,7 +5,7 @@ var main, base, server;
 
 describe("Binder", function () {
     before(function () {
-        base = "/home/karboom/projects/javascript/route-fs/test/tmp";
+        base = __dirname + "/tmp";
         main = new (require('../index.js'))({root:base});
         server = restify.createServer();
         server.use(restify.queryParser());
@@ -72,8 +72,7 @@ describe("Binder", function () {
     });
 
 
-
     after(function () {
-        
+
     });
 });
