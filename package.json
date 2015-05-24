@@ -26,9 +26,9 @@
   "homepage": "https://github.com/karboom/route-fs",
   "devDependencies": {
     "mocha": "^2.0.1",
+    "request": "^2.55.0",
     "restify": "^3.0.2",
-    "should": "^6.0.1",
-    "request" : "*"
+    "should": "^6.0.1"
   },
   "dependencies": {
     "route-parser": "0.0.3"
