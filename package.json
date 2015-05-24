@@ -4,8 +4,8 @@
   "description": "A easy way to organize your routers.Say goodbye to writing route list by hand, just proxy to file system.",
   "main": "index.js",
   "scripts": {
-
-    "test-on-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
+    "test" : "mocha test/",
+    "test-ci": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
   },
   "repository": {
     "type": "git",
