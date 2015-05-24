@@ -3,7 +3,12 @@ Route-fs
 
 A easy way to organize your routers.Say goodbye to writing route list by hand, just with the file system.
 
+[![npm version](https://badge.fury.io/js/route-fs.svg)](http://badge.fury.io/js/route-fs)
+[![npm depend](https://david-dm.org/karboom/route-fs.svg)](https://david-dm.org/karboom/route-fs.svg)
 [![Build Status](https://travis-ci.org/karboom/route-fs.svg?branch=master)](https://travis-ci.org/karboom/route-fs)
+[![Coverage Status](https://coveralls.io/repos/karboom/route-fs/badge.svg?branch=master)](https://coveralls.io/r/karboom/route-fs?branch=master)
+
+
 
 How to use
 ==========
