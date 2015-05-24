@@ -8,6 +8,10 @@ after_script: "npm install coveralls && cat ./coverage/lcov.info | coveralls"
 deploy:
   provider: npm
   email: "mail@karboom.me"
-  api_key: "a2FyYm9vbTo0NzI5NDE5MDA="
+  api_key:
+    secure: VmS84xxHwYTEhVgc1F9pJWmt95R+8jPIL3lPurRLYD0lrlXsmFph9AZaopgaao8vE22j4z3HYup0EV8BPDgZ8Q99gq3QlDe3hWPyda520+DpokFzhguGeDNjefdg7iX7up+a4sm87/8cWRTXekK4k6t7wB0wOjHL9zCsA6Z1Mq2QQ0sU8pbCgmChiN
+  /kqTAfWtdiOEMvUyZiLv0bP3TGLxhLJQuRKSqMDdDGARra26gFHFgajY9QgTgFAK3/40q5GG6fR8w6xiTpUjgUm0oZs5AQgcVYGDvN4QO7MIaQvSLQuATeiIwJDl28HKjVZyWUZ+zE5PcER6KMvDKcj5n+OvVwWwUpzpr4m0lCpwnDXjvfbq7Rb8HSL+Tbvhl7k7/r
+  TgRoW67xi3mNtz6/BAVLvTIDwVXfoiFqBNMYkmV0ws7WrKZT565kjoc0g9PUyt6hbdY0YUb+yKhGbyWSN41ZIIF18du5ni75MxINLr844ZVrvMHIQbjHdziGoDKO9d27qG0eNNQXzwsw6VCx1e4aMuhxXflIYqs/tOuqM9r14ejmC8YNDNO3/fD3jq2qmy0r7l/HVd
+  E7Rs4EJWkDaH3wXadLMAyFcQaYIoi2Cdyr47BQQhuRfVw02QzWH0I5mDDjQfVYNDZL68JtMnqbqqi2molJB4p+kW56nZHeMogoal0=
   on:
       branch: master
