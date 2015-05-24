@@ -9,7 +9,6 @@ A easy way to organize your routers.Say goodbye to writing route list by hand, j
 [![Coverage Status](https://coveralls.io/repos/karboom/route-fs/badge.svg?branch=master)](https://coveralls.io/r/karboom/route-fs?branch=master)
 
 
-
 How to use
 ==========
 
