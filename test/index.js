@@ -30,17 +30,17 @@ describe("Binder", function () {
         });
     });
 
-    describe("#parse_uri", function () {
-
-        it("should found the sub uri", function () {
-            var uris = main.parse_uri();
-
-            uris.should.containEql({path:base + '/public/person/pet.js', uri:  '/public/:person/pet/:id'});
-            uris.should.containEql({path:base + '/public/person/pet/dog.js', uri: '/public/:person/:pet/dog/:id'});
-            uris.should.containEql({path:base + '/public/person.js', uri: '/public/person/:id'});
-        });
-
-    });
+    //describe("#parse_uri", function () {
+    //
+    //    it("should found the sub uri", function () {
+    //        var uris = main.parse_uri();
+    //
+    //        uris.should.containEql({path:base + '/public/person/pet.js', uri:  '/public/:person/pet/:id'});
+    //        uris.should.containEql({path:base + '/public/person/pet/dog.js', uri: '/public/:person/:pet/dog/:id'});
+    //        uris.should.containEql({path:base + '/public/person.js', uri: '/public/person/:id'});
+    //    });
+    //
+    //});
 
     describe("#handle", function () {
         it("should 404", function () {
