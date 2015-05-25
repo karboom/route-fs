@@ -1,6 +1,6 @@
 {
   "name": "route-fs",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "A easy way to organize your routers.Say goodbye to writing route list by hand, just proxy to file system.",
   "main": "index.js",
   "scripts": {

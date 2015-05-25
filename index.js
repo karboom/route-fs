@@ -2,6 +2,9 @@
  *  You can add routers from fs structure automatic
  *  @author karboom
  *  @version 2.0
+ *  @todo add prefix
+ *  @todo custom 404 body
+ *  @todo throw err when not method
  */
 
 var fs = require('fs');
@@ -9,6 +12,7 @@ var Route = require('route-parser');
 
 function Binder (config) {
     this.root = config.root;
+    this.prefix = 'undefined' == typeof config.prefix ? '' : config.prefix.replace(/(^[^/].+)/, "/$1");
 }
 
 Binder.prototype.list_file = function () {
@@ -63,7 +67,7 @@ Binder.prototype.handle = function () {
         //error master
 
        for(i in routes) {
-           route = new Route(routes[i].uri);
+           route = new Route(self.prefix + routes[i].uri);
 
            if ((params = route.match(req.url))) {
                req.params = params;
@@ -76,18 +80,19 @@ Binder.prototype.handle = function () {
        }
 
         res.status(404);
-        res.send('not found');
+        res.end();
     };
 };
 
 Binder.prototype.bind = function (server) {
+    var self = this;
     var routes = this.parse_uri(), file;
 
     routes.forEach(function (route) {
         file = require(route.path);
 
         Object.keys(file).forEach(function (method) {
-            server[method](route.uri, file[method]);
+            server[method](self.prefix + route.uri, file[method]);
         })
     });
 };

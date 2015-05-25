@@ -1,7 +1,7 @@
 Route-fs
 ========
 
-A easy way to organize your routers.Say goodbye to writing route list by hand, just with the file system.
+A easy way to organize your routers.Say goodbye to writing route list by hand, just proxy to file system.
 
 [![npm version](https://badge.fury.io/js/route-fs.svg)](http://badge.fury.io/js/route-fs)
 [![npm depend](https://david-dm.org/karboom/route-fs.svg)](https://david-dm.org/karboom/route-fs.svg)
@@ -20,7 +20,10 @@ Import it to your project
 ```javascript
 var server = require('express').createServer(); //or other express like server
 var Routers = require('route-fs');
-var routers = new Routers({root:YOUR_PATH_OF_ROUTERS});
+var routers = new Routers({
+		root:YOUR_PATH_OF_ROUTERS,
+    	prefix:YOUR_URL_PREFIX //optional,default a empty string
+    });
 server.listen(3000);
 ```
 
@@ -56,6 +59,10 @@ it's the same as add route with
 In the ①, it becomes
 
 ``/:person/works/:id``
+
+③if you set the prefix in constructor, like '/prefix'. In the ①, it becomes
+
+``/prefix/person/works/:id``
 
 #####For more detail, see /test directory now
 

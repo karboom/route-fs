@@ -1,7 +1,7 @@
 require('should');
 var restify = require('restify');
 var request = require('request');
-var main, base, server, server2;
+var main, base, server, server2, server3, server4;
 
 describe("Binder", function () {
     before(function () {
@@ -68,7 +68,6 @@ describe("Binder", function () {
                 });
             });
         });
-
     });
 
     describe('#bind', function () {
@@ -109,6 +108,59 @@ describe("Binder", function () {
                 res.on('data', function (data) {
                     JSON.parse(data).should.eql({person:'85757',pet:'1',id:'2'});
                     done();
+                });
+            });
+        });
+
+    });
+
+
+    describe("#prefix", function () {
+        describe("should work with bind", function () {
+            before(function (done) {
+                server3 = restify.createServer();
+                server3.use(restify.queryParser());
+                server3.use(restify.bodyParser());
+
+                new (require('../index.js'))({root:base, prefix: '/prefix'}).bind(server3);
+                server3.listen(3300, function (err) {
+                    if (err) console.log(err);
+                    done();
+                });
+            });
+
+            it("prefix should work", function (done) {
+
+                request.get("http://localhost:3300/prefix/public/person/85757").on('response', function (res) {
+                    res.setEncoding('utf8');
+                    res.on("data", function (data) {
+                        JSON.parse(data).should.eql({id: "85757"});
+                        done();
+                    });
+                });
+            });
+        });
+
+        describe("work with handle", function () {
+            before(function (done) {
+                server4 = restify.createServer();
+                server4.use(restify.queryParser());
+                server4.use(restify.bodyParser());
+
+                server4.get(/.+/,new (require('../index.js'))({root:base, prefix: 'prefix'}).handle());
+                server4.listen(3400, function (err) {
+                    if (err) console.log(err);
+                    done();
+                });
+            });
+
+            it("prefix worked", function (done) {
+                request.get("http://localhost:3400/prefix/public/person/85757").on('response', function (res) {
+                    res.setEncoding('utf8');
+                    res.on("data", function (data) {
+                        JSON.parse(data).should.eql({id: "85757"});
+                        done();
+                    });
                 });
             });
         });
