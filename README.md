@@ -16,6 +16,16 @@ How to use
 npm install route-fs
 ```
 
+Prepare a folder for your routers,like this
+|-routers
+|--person.js
+|--person
+|---works.js
+
+Exports the method handler in the file, example by works.js
+exports.get = function(req, res, next) {/* YOUR LOGIC */};
+exports.post = function(req, res, next) {/* YOUR LOGIC */};
+
 Import it to your project
 ```javascript
 var server = require('express').createServer(); //or other express like server
