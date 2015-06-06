@@ -24,7 +24,7 @@ Prepare a folder for your routers,like this
 |---works.js
 ```
 
-Exports the method handler in the file, example by works.js
+Exports the method handler you want in the file, example by works.js
 ```javascript
 exports.get = function(req, res, next) {/* YOUR LOGIC */};
 exports.post = function(req, res, next) {/* YOUR LOGIC */};
