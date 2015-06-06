@@ -12,19 +12,24 @@ A easy way to organize your routers.Say goodbye to writing route list by hand, j
 How to use
 ==========
 
-```
+```text
 npm install route-fs
 ```
 
 Prepare a folder for your routers,like this
+```text
 |-routers
 |--person.js
 |--person
 |---works.js
+```
 
 Exports the method handler in the file, example by works.js
+```javascript
 exports.get = function(req, res, next) {/* YOUR LOGIC */};
 exports.post = function(req, res, next) {/* YOUR LOGIC */};
+```
+
 
 Import it to your project
 ```javascript
