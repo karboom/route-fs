@@ -28,6 +28,8 @@ Exports the method handler you want in the file, example by works.js
 ```javascript
 exports.get = function(req, res, next) {/* YOUR LOGIC */};
 exports.post = function(req, res, next) {/* YOUR LOGIC */};
+exports.put = function(req, res, next) {/* YOUR LOGIC */};
+exports['delete'] = function(req, res, next) {/* YOUR LOGIC */};
 ```
 
 
