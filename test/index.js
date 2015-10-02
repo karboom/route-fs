@@ -92,7 +92,7 @@ describe("Binder", function () {
         });
 
         it("should parse id", function (done) {
-            request.get("http://localhost:3100/public/person/85757").on('response', function (res) {
+            request.get("http://localhost:3100/public/person_happy/85757").on('response', function (res) {
                 res.setEncoding('utf8');
                 res.on("data", function (data) {
                     JSON.parse(data).should.eql({id: "85757"});

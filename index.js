@@ -2,7 +2,6 @@
  *  You can add routers from fs structure automatic
  *  @author karboom
  *  @version 2.0
- *  @todo add prefix
  *  @todo custom 404 body
  *  @todo throw err when not method
  */
@@ -48,7 +47,8 @@ Binder.prototype.parse_uri = function () {
 
         for (var i in list) {
             var sub = list[i].replace('.js','').replace(self.root, '');
-            if (list[i] != file && -1 != file.indexOf(sub)) {
+
+            if (list[i] != file && -1 != file.indexOf(sub + '/')) {
                 uri_obj.uri = uri_obj.uri.replace(sub, sub.replace(/\/(\w+)$/, "/:$1"));
             }
         }
