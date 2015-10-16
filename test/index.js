@@ -37,14 +37,24 @@ describe("Binder", function () {
             server.use(restify.bodyParser());
 
             server.get(/.+/,main.handle());
+            server.post(/.+/, main.handle());
             server.listen(3200, function (err) {
                 if (err) console.log(err);
                 done();
             });
         });
-        it("should 404", function () {
+
+        it('should 405', function (done) {
+            request.post('http://localhost:3200/public/person/85757').on('response', function (res) {
+                res.statusCode.should.equal(405);
+                done();
+            });
+        });
+
+        it("should 404", function (done) {
             request.get("http://localhost:3200/test").on('response', function (res) {
                 res.statusCode.should.equal(404);
+                done();
             });
         });
 
