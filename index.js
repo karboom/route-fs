@@ -2,8 +2,6 @@
  *  You can add routers from fs structure automatic
  *  @author karboom
  *  @version 2.0
- *  @todo custom 404 body
- *  @todo throw err when not method
  */
 
 var fs = require('fs');
@@ -73,7 +71,14 @@ Binder.prototype.handle = function () {
                req.params = params;
 
                var func = require(routes[i].path);
-               func[req.method.toLowerCase()](req, res, next);
+               var method = req.method.toLowerCase();
+
+               if (func[method]) {
+                   func[method](req, res, next);
+               } else {
+                   res.status(405);
+                   res.end();
+               }
 
                return;
            }
