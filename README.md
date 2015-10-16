@@ -19,9 +19,12 @@ npm install route-fs
 Prepare a folder for your routers,like this
 ```text
 |-routers
-|--person.js
-|--person
-|---works.js
+
+|---person.js
+
+|---person
+
+|------works.js
 ```
 
 Exports the method handler you want in the file, example by works.js
