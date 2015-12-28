@@ -3,8 +3,6 @@ Route-fs
 
 A easy way to organize your routers.Say goodbye to writing route list by hand, just proxy to file system.
 
-[![npm version](https://badge.fury.io/js/route-fs.svg)](http://badge.fury.io/js/route-fs)
-[![npm depend](https://david-dm.org/karboom/route-fs.svg)](https://david-dm.org/karboom/route-fs.svg)
 [![Build Status](https://travis-ci.org/karboom/route-fs.svg?branch=master)](https://travis-ci.org/karboom/route-fs)
 [![Coverage Status](https://coveralls.io/repos/karboom/route-fs/badge.svg?branch=master)](https://coveralls.io/r/karboom/route-fs?branch=master)
 
@@ -12,77 +10,102 @@ A easy way to organize your routers.Say goodbye to writing route list by hand, j
 How to use
 ==========
 
+##### Step 1
+
 ```text
-npm install route-fs
+npm install route-fs --save
 ```
 
-Prepare a folder for your routers,like this
+##### Step 2
+
+Create a floder named `routers` in your project, for example
+
 ```text
-|-routers
 
-|---person.js
+|-app.js
 
-|---person
+|-public/
 
-|------works.js
+|-routers/
+
+  |-person.js
+
+  |-person/
+
+    |-works.js
+
 ```
 
-Exports the method handler you want in the file, example by works.js
+##### Step 3
+
+Add middleware on your server in `app.js`
+
 ```javascript
-exports.get = function(req, res, next) {/* YOUR LOGIC */};
-exports.post = function(req, res, next) {/* YOUR LOGIC */};
-exports.put = function(req, res, next) {/* YOUR LOGIC */};
-exports['delete'] = function(req, res, next) {/* YOUR LOGIC */};
+var server = require('express')(); // Support koa, express, restify now.
+
+var RS = require('route-fs');
+
+server.use(new RS({
+	root: __dirname + '/routers', 	// path of `routers` directory
+	prefix: 'public' 				// optional, default a empty string
+});
+
+server.listen(80);
+
 ```
 
+It will generate routes matcher like
+```text
+/public/person/:id?
 
-Import it to your project
+/public/person/:person/work/:id?
+
+```
+
+##### Step 4
+
+Exports the method handler in the file, if you are use `koa`, export generate function instead.
+
+`work.js`
+
 ```javascript
-var server = require('express').createServer(); //or other express like server
-var Routers = require('route-fs');
-var routers = new Routers({
-		root:YOUR_PATH_OF_ROUTERS,
-    	prefix:YOUR_URL_PREFIX //optional,default a empty string
-    });
-server.listen(3000);
+exports.get = function(req, res, next) {
+	res.send("We are works belongs to person No." + req.params.person);
+};
+
+exports.put = function(req, res, next) {
+	var id = addWork(req.params.person);
+	res.send("The work added to " + req.params.person + ", id is " + id)
+};
 ```
 
-**you have two way to make it work**
+`person.js`
 
-######The way 1:As a wild router
 ```javascript
-['get', 'post', 'delete', 'head', 'put']
-	.forEach(function(method){
-    	server[method](/.+/, routers.handle())
-    });
+exports.get = function(req, res, next) {
+	res.send("I am No." + req.params.person);
+};
+
+exports['delete'] = function() {
+	res.send("No." + req.params.id + " was deleted.")
+}
 ```
 
-######The way 2:Bind to your server
-```javascript
-routers.bind(server);
+It will call the function named by http method when the request coming.
+
+
+##### Step 5
+
+It just finished! Let's experience with curl
+
+```curl
+curl -X GET 'http://localhost/public/person/1/work/'	->	"We are works belongs to person No.1"
+curl -X PUT 'http://localhost/public/person/2/work/'	->	"The work added to 2, id is 1"
+curl -X GET 'http://localhost/public/person/100'		->	"I am No.100"
+curl -X DELETE 'http://localhost/public/person/1'		->	"No.1 was deleted."
+
 ```
 
-example
-=======
-①If YOUR_PATH_OF_ROUTERS contain the file
 
-``/person/works.js``
-
-it's the same as add route with
-
-``/person/works/:id``
-
-②If there have a directory and file with the same name in one directory,such as
-
-``/person.js``
-
-In the ①, it becomes
-
-``/:person/works/:id``
-
-③if you set the prefix in constructor, like '/prefix'. In the ①, it becomes
-
-``/prefix/person/works/:id``
-
-#####For more detail, see /test directory now
+###For more detail, see /test directory now
 
