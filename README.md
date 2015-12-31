@@ -3,8 +3,8 @@ Route-fs
 
 A easy way to organize your routers.Say goodbye to writing route list by hand, just proxy to file system.
 
-[![Build Status](https://travis-ci.org/karboom/route-fs.svg?branch=master)](https://travis-ci.org/karboom/route-fs)
-[![Coverage Status](https://coveralls.io/repos/karboom/route-fs/badge.svg?branch=master)](https://coveralls.io/r/karboom/route-fs?branch=master)
+[![Travis](https://img.shields.io/travis/karboom/route-fs/master.svg?style=flat-square)](https://travis-ci.org/karboom/route-fs)
+[![Coveralls branch](https://img.shields.io/coveralls/karboom/route-fs/master.svg?style=flat-square)](https://coveralls.io/r/karboom/route-fs)
 
 
 How to use
