@@ -24,8 +24,8 @@ describe("RS", function () {
         it("should return all files", function () {
             var list = rs.list_file();
 
-            list.should.containEql(root + '/public/person.js');
-            list.should.containEql(root + '/public/unit/computer.js');
+            list.should.containEql(root + '/person.js');
+            list.should.containEql(root + '/unit/computer.js');
         });
     });
 
