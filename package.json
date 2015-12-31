@@ -1,6 +1,6 @@
 {
   "name": "route-fs",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A easy way to organize your routers.Say goodbye to writing route list by hand, just proxy to file system.",
   "main": "index.js",
   "scripts": {
@@ -36,7 +36,6 @@
     "should": "^6.0.1"
   },
   "dependencies": {
-    "koa-router": "^5.3.0",
-    "route-parser": "0.0.3"
+    "koa-router": "^5.3.0"
   }
 }
