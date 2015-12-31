@@ -38,19 +38,23 @@ Create a floder named `routers` in your project, for example
 
 ##### Step 3
 
-Add middleware on your server in `app.js`
+Add middleware on your server in `app.js`. Support koa, express 4, restify now.
 
 ```javascript
-var server = require('express')(); // Support koa, express, restify now.
+var koa = require('koa')();
+var express = require('express')();
+var restify = require('restify').createServer();
 
 var RS = require('route-fs');
 
-server.use(new RS({
+var rs = new RS({
 	root: __dirname + '/routers', 	// path of `routers` directory
 	prefix: 'public' 				// optional, default a empty string
 });
 
-server.listen(80);
+koa.use(rs.koa());
+express.use(rs.express());
+restify.pre(rs.restify());
 
 ```
 
