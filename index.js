@@ -40,7 +40,7 @@ RS.prototype.parse_uri = function () {
     });
 
     list.forEach(function (file) {
-        var uri_obj = {path:file, uri: self.prefix + file.replace('.js','').concat('/:id?').replace(self.root,'')};
+        var uri_obj = {path:file, uri: self.prefix + file.replace('.js','').replace(/\/(\w+)$/, "/$1/:$1?").replace(self.root,'')};
 
         for (var i in list) {
             var sub = list[i].replace('.js','').replace(self.root, '');

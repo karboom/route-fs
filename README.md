@@ -60,9 +60,9 @@ restify.pre(rs.restify());
 
 It will generate routes matcher like
 ```text
-/public/person/:id?
+/public/person/:person?
 
-/public/person/:person/work/:id?
+/public/person/:person/work/:work?
 
 ```
 
@@ -91,7 +91,7 @@ exports.get = function(req, res, next) {
 };
 
 exports['delete'] = function() {
-	res.send("No." + req.params.id + " was deleted.")
+	res.send("No." + req.params.person + " was deleted.")
 }
 ```
 

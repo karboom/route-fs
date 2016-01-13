@@ -34,9 +34,9 @@ describe("RS", function () {
         it("should found the sub uri", function () {
             var uris = rs.parse_uri();
 
-            uris.should.containEql({path:root + '/person/pet.js', uri:  '/public/person/:person/pet/:id?'});
-            uris.should.containEql({path:root + '/person/pet/dog.js', uri: '/public/person/:person/pet/:pet/dog/:id?'});
-            uris.should.containEql({path:root + '/person.js', uri: '/public/person/:id?'});
+            uris.should.containEql({path:root + '/person/pet.js', uri:  '/public/person/:person/pet/:pet?'});
+            uris.should.containEql({path:root + '/person/pet/dog.js', uri: '/public/person/:person/pet/:pet/dog/:dog?'});
+            uris.should.containEql({path:root + '/person.js', uri: '/public/person/:person?'});
         });
 
     });
@@ -63,7 +63,7 @@ describe("RS", function () {
                 request[method]("http://localhost:"+ service[name] + "/public/person/85757/pet/1/dog/2").on('response', function (res) {
                     res.setEncoding('utf-8');
                     res.on('data', function (data) {
-                        JSON.parse(data).should.eql({person:'85757',pet:'1',id:'2'});
+                        JSON.parse(data).should.eql({person:'85757',pet:'1',dog:'2'});
                         done();
                     });
                 });
@@ -76,7 +76,7 @@ describe("RS", function () {
                 request[method]("http://localhost:"+ service[name] + "/public/person_happy/85757").on('response', function (res) {
                     res.setEncoding('utf-8');
                     res.on("data", function (data) {
-                        JSON.parse(data).should.eql({id: "85757"});
+                        JSON.parse(data).should.eql({person_happy: "85757"});
                         done();
                     });
                 });
